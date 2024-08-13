@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+   <html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
+      <!--=============== CSS ===============-->
+
+      <!--POPPINS-->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+   <style>
+      /*=============== GOOGLE FONTS ===============*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+
+/*=============== VARIABLES CSS ===============*/
+:root {
+  /*========== Colors ==========*/
+  /*Color mode HSL(hue, saturation, lightness)*/
+  --first-color: hsl(273, 100%, 50%);
+  --title-color: hsl(0, 0%, 15%);
+  --text-color: hsl(0, 0%, 35%);
+  --body-color: hsl(0, 0%, 4%);
+  --container-color: #000000;
+
+  /*========== Font and typography ==========*/
+  /*.5rem = 8px | 1rem = 16px ...*/
+  --body-font: "Poppins", sans-serif;
+  --h2-font-size: 1.25rem;
+  --small-font-size: .813rem;
+}
+
+/*========== Responsive typography ==========*/
+@media screen and (min-width: 1120px) {
+  :root {
+    --h2-font-size: 1.5rem;
+    --small-font-size: .875rem;
+  }
+}
+
+/*=============== BASE ===============*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--body-font);
+  background-color: var(--body-color);
+  color: var(--text-color);
+  margin: 25px;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/*=============== CARD ===============*/
+.container {
+  display: grid;
+  place-items: center;
+  margin-inline: 1.5rem;
+  padding-block: 5rem;
+}
+
+.card__container {
+  display: grid;
+  row-gap: 3.5rem;
+}
+
+.card__article {
+  position: relative;
+  overflow: hidden;
+}
+
+.card__img {
+  
+  width: 328px;
+  border-radius: 1.5rem;
+  
+}
+
+.card__data {
+  
+  width: 280px;
+  background-color: var(--container-color);
+  padding: 1.5rem 2rem;
+  box-shadow: 0 8px 24px hsla(0, 0%, 0%, .15);
+  border-radius: 1rem;
+  position: absolute;
+  bottom: -9rem;
+  left: 0;
+  right: 0;
+  margin-inline: auto;
+  opacity: 0;
+  transition: opacity 1s 1s;
+}
+
+.card__description {
+  
+  color: #fff;
+  text-align: center;
+  display: block;
+  font-size: var(--small-font-size);
+  margin-bottom: .25rem;
+}
+
+.card__title {
+  font-size: var(--h2-font-size);
+  font-weight: 500;
+  color: var(--title-color);
+  margin-bottom: .75rem;
+}
+
+.card__button {
+  justify-content: center;
+  display: flex;
+  text-decoration: none;
+  font-size: var(--small-font-size);
+  font-weight: 500;
+  color: var(--first-color);
+}
+
+.card__button:hover {
+  text-decoration: underline;
+}
+
+/* Naming animations in hover */
+.card__article:hover .card__data {
+  animation: show-data 1s forwards;
+  opacity: 1;
+  transition: opacity .3s;
+}
+
+.card__article:hover {
+  animation: remove-overflow 2s forwards;
+}
+
+.card__article:not(:hover) {
+  animation: show-overflow 2s forwards;
+}
+
+.card__article:not(:hover) .card__data {
+  animation: remove-data 1s forwards;
+}
+
+.container-txt{
+  color: #fff;
+  padding: 5rem;
+  text-align: justify;
+  font-family: var(--body-font);
+   font-size: 25px;
+}
+
+h1{
+  justify-content: center;
+  display: flex;
+  color: #fff;
+  text-align: justify;
+  font-family: var(--body-font);
+   font-size: 50px;
+   padding-bottom: 20px;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.dedicatorio{
+  justify-content: center;
+  display: flex;
+  text-decoration: none;
+  font-size: var(--small-font-size);
+  font-weight: 500;
+  color: var(--first-color);
+  padding-bottom: 100px;
+  
+}
+/* Card animation */
+@keyframes show-data {
+  50% {
+    transform: translateY(-10rem);
+  }
+  100% {
+    transform: translateY(-7rem);
+  }
+}
+
+@keyframes remove-overflow {
+  to {
+    overflow: initial;
+  }
+}
+
+@keyframes remove-data {
+  0% {
+    transform: translateY(-7rem);
+  }
+  50% {
+    transform: translateY(-10rem);
+  }
+  100% {
+    transform: translateY(.5rem);
+  }
+}
+
+@keyframes show-overflow {
+  0% {
+    overflow: initial;
+    pointer-events: none;
+  }
+  50% {
+    overflow: hidden;
+  }
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* For small devices */
+@media screen and (max-width: 495px) {
+
+  
+  .container {
+    margin-inline: 1rem;
+  }
+
+  .card__data {
+    width: 250px;
+    padding: 1rem;
+  }
+
+  h1{
+font-size: 20px;
+font-family: var(--body-font)
+  }
+
+  .container-txt{
+    font-size: 18px;
+    padding: 2rem;
+  }
+}
+
+/* For medium devices */
+@media screen and (min-width: 768px) {
+  .card__container {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1.5rem;
+  }
+}
+/* For large devices */
+@media screen and (min-width: 1120px) {
+  .container {
+  }
+
+  .card__container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .card__img {
+    width: 348px;
+  }
+  .card__data {
+    width: 316px;
+    padding-inline: 2.5rem;
+  }
+}
+   </style>
+      <title>FELIZ ANIVERSÁRIO</title>
+   </head>
+   <body>
+      <div class="container-txt">
+         <h1>Carta Aberta </h1>
+         Bom, não sei nem por onde começar, mas enfim, eu queria muito que você soubesse o quanto você é especial para mim. Quero dizer para você que, independente de qualquer coisa, você foi uma das melhores pessoas que já conheci na minha vida e tive a oportunidade de conhecer. A vida me ensinou a valorizar as pessoas, a amar cada vez mais e, principalmente, a cuidar delas. Você apareceu na minha vida em um dos momentos em que eu mais precisava de um colo, e você estava lá para me ajudar a combater todas as barreiras. Eu só queria dizer o quanto você é importante para mim. Você é meu ponto de paz e me desculpe por todas as ignoradas por raiva/ciúmes. Mas, apesar de tudo, saiba que eu te amo muito e você é a única pessoa que me faz sorrir. Você é luz, você é maravilhosa. Desde que você entrou na minha vida, minha vida mudou completamente e eu sou muito grato por ter você ao meu lado. Você fez coisas que nenhuma outra pessoa fará na minha vida.
+
+Sendo sincero, eu te amo muito, muito. Enfim, eu não tenho palavras para expressar o quanto você significa para mim. Em todos os momentos, você me apoia em todas as coisas. Obrigado por me aturar, pois sei que não é fácil. Sou muito chato, ciumento, bipolar, mas saiba que tudo isso é medo de perder você, pois você faz parte de mim. Eu só queria agradecer por tudo. Eu te amo infinitamente, meu amor. Hoje e sempre, quero estar do seu lado. Posso dizer que não tem preço estar com você. É coisa de outro mundo, eu me sinto mais feliz. Você é minha metade. Eu te amo muito, minha garota, minha pequena.
+
+Eu já disse "eu te amo" várias vezes, e é uma palavra muito forte e com muito significado para ser dita à toa e para qualquer um. Por isso, todos os "eu te amo" que já disse para você são extremamente verdadeiros. Pois eu realmente te amo. Desculpa mesmo se te tratei com ignorância, mas era porque eu não estava sabendo o que estava sentindo. Mas isso não vem ao caso agora. Te agradeço muito por tudo, valeu cada momento que passei com você. Infelizmente, não deu certo, mas continuamos conectados de alguma forma e espero de verdade que você continue comigo. Uma coisa que NUNCA acontece comigo é ficar sozinho.
+
+TE AMO MUITO, MINHA GATINHA. Me desculpa por qualquer coisa. Tudo que fiz foi de coração e espero que você continue sendo essa menina incrível que você é. Não perca a sua essência, meu anjo. TE AMO DEMAIS. Tentei expressar da melhor forma.&#x1F90D;
+      </div>
+      <h1>Tempo</h1>
+      <div class="container">
+         <div class="card__container">
+            <!--baco" -->
+            <article class="card__article">
+               <img src="assets/img/1/baco.png" alt="image" class="card__img">
+
+               <div class="card__data">
+                  <span class="card__description">09/08/2023</span>
+                  <h2 class="card__title"><img src="assets/img/1/link.jpeg" alt="image" class="card__img"></h2>
+                  <a href="https://open.spotify.com/intl-pt/track/3nlhqZHMXG2A5UkW633wwx?si=b5d9820283f64e46" class="card__button"> Baco Exu do Blues - Samba in Paris </a>
+               </div>
+            </article>
+            <!--BABY-->
+            <article class="card__article">
+               <img src="assets/img/2/baby.png" alt="image" class="card__img">
+
+               <div class="card__data">
+                  <span class="card__description">09/2023</span>
+                  <h2 class="card__title"><img src="assets/img/2/link.jpeg" alt="image" class="card__img"></h2>
+                  <a href="https://open.spotify.com/intl-pt/track/66fVMFVA9WGRtwLCaF93U5?si=6b63158b5699481f" class="card__button">Kyan, Mu540 - BABY CÊ É GATA</a>
+               </div>
+            </article>
+            
+             <!--kayblack-->
+             <article class="card__article">
+               <img src="assets/img/3/kayblack.png" alt="image" class="card__img">
+
+               <div class="card__data">
+                  <span class="card__description">10/2023</span>
+                  <h2 class="card__title"><img src="assets/img/3/link.jpeg" alt="image" class="card__img"></h2>
+                  <a href="https://open.spotify.com/intl-pt/track/5TtTijiNYtFc6ktQARjY30?si=822b6d7f50d748bc" class="card__button">Preferida</a>
+               </div>
+            </article>
+
+            <!--poesia 12-->
+            <article class="card__article">
+               <img src="assets/img/4/poesia.jfif" alt="image" class="card__img">
+
+               <div class="card__data">
+                  <span class="card__description">11/2024</span>
+                  <h2 class="card__title"><img src="assets/img/4/link.jpeg" alt="image" class="card__img"></h2>
+                  <a href="https://open.spotify.com/intl-pt/track/0DNeNR89rtydtYHL6B0qqz?si=5d7d5594f0294f1f" class="card__button">Poesia Acústica 12 - CAIO Luccas </a>
+               </div>
+            </article>
+            
+             <!--DELECRUZ-->
+             <article class="card__article">
+               <img src="assets/img/5/Delacruz.jfif" alt="image" class="card__img">
+
+               <div class="card__data">
+                  <span class="card__description">12/2024</span>
+                  <h2 class="card__title"><img src="assets/img/5/link.jpeg" alt="image" class="card__img"></h2>
+                  <a href="https://open.spotify.com/intl-pt/track/1UVquahdeg6mRYDTHFKRx0?si=0cfa63672c164658" class="card__button">Delacruz - Sunshine</a>
+               </div>
+            </article>
+
+            <!--FERRUGEM-->
+            <article class="card__article">
+               <img src="assets/img/6/ferrugem.jfif" alt="image" class="card__img">
+
+               <div class="card__data">
+                  <span class="card__description">01/2024</span>
+                  <h2 class="card__title"><img src="assets/img/6/link.jpeg" alt="image" class="card__img"></h2>
+                  <a href="https://open.spotify.com/intl-pt/track/1M9JZXjz6GCUH7VbFFBmJx?si=08d3e98f5b2a4086" class="card__button">Todo Amoro do Mundo</a>
+               </div>
+            </article>
+
+            <!--leans-->
+            <article class="card__article">
+               <img src="assets/img/7/leans.jfif" alt="image" class="card__img">
+
+               <div class="card__data">
+                  <span class="card__description">02/2024</span>
+                  <h2 class="card__title"><img src="assets/img/7/link.jpeg" alt="image" class="card__img"></h2>
+                  <a href="https://open.spotify.com/intl-pt/track/0GsQzTpegvifzQZ4wXsCZ2?si=1adf78d0c3e64586" class="card__button">Yunk Vino - Leans Pt. 2 </a>
+               </div>
+            </article>
+
+            <!--ret-->
+            <article class="card__article">
+               <img src="assets/img/8/ret.jfif" alt="image" class="card__img">
+
+               <div class="card__data">
+                  <span class="card__description">03/2024</span>
+                  <h2 class="card__title"><img src="assets/img/8/link.jpeg" alt="image" class="card__img"></h2>
+                  <a href="https://open.spotify.com/intl-pt/track/1yNXGRORl6egstWgugOTs8?si=69f08509b9474447" class="card__button">Filipe Ret - Só pra Você Lembrar </a>
+               </div>
+            </article>
+
+            <!--Orochi "ISSO QUE É ARTE" -->
+            <article class="card__article">
+               <img src="assets/img/9/orochi.jfif" alt="image" class="card__img">
+
+               <div class="card__data">
+                  <span class="card__description">04/2024</span>
+                  <h2 class="card__title"><img src="assets/img/9/link.jpeg" alt="image" class="card__img"></h2>
+                  <a href="https://open.spotify.com/intl-pt/track/03lktDGYEv8pr5xHbQaln9?si=8a6c9a5ff8154ea4" class="card__button">Orochi "ISSO QUE É ARTE"</a>
+               </div>
+            </article>
+
+            <!--MANDRAKA-->
+            <article class="card__article">
+               <img src="assets/img/10/mandraka.jfif" alt="image" class="card__img">
+               <div class="card__data">
+                  <span class="card__description">05/2024</span>
+                  <h2 class="card__title"><img src="assets/img/10/link.jpeg" alt="image" class="card__img"></h2>
+                  <a href="https://open.spotify.com/intl-pt/track/5CUH8hEmgqsfQ3jKTPJLdm?si=16fab209c48e429a" class="card__button">Kyan - MANDRAKA DO MOMENTO</a>
+               </div>
+            </article>
+
+             <!--Tempo" -->
+             <article class="card__article">
+               <img src="assets/img/11/tempo.jfif" alt="image" class="card__img">
+
+               <div class="card__data">
+                  <span class="card__description">06/2024</span>
+                  <h2 class="card__title"><img src="assets/img/11/link.jpeg" alt="image" class="card__img"></h2>
+                  <a href="https://open.spotify.com/intl-pt/album/7opYgdcsTkMNxFNHWZueO8?si=xN3pRIxNQWqu1iD2WmBqmg" class="card__button">Tempo - kayblack</a>
+               </div>
+            </article>
+            <!--PERDICAO-->
+            <article class="card__article">
+               <img src="assets/img/12/ab67616d0000b2739b3c1e2699c09a4ef344704b.jfif" alt="image" class="card__img">
+               <div class="card__data">
+                  <span class="card__description">07/2024</span>
+                  <h2 class="card__title"><img src="assets/img/12/link.jpeg" alt="image" class="card__img"></h2>
+                  <a href="https://open.spotify.com/intl-pt/track/0xcdw2bWgJ4lrt3qZJrZ1o?si=a313b32be94d466f" class="card__button">Perdição</a>
+               </div>
+            </article>
+         </div>
+      </div>
+
+<div class="container-dedicatorio">
+      <div class="dedicatorio">Fidelis para Rubia Neiva </div>
+      </div>
+</body>
+</html>
